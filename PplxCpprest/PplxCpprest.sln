@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pplx", "Pplx\Pplx.vcxproj", "{2D1041A6-D2B6-4672-8C74-655BE65F1357}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cpprest", "Cpprest\Cpprest.vcxproj", "{75E67BB6-43B7-48CC-8C59-10E6D8942E69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D1041A6-D2B6-4672-8C74-655BE65F1357}.Debug|x64.ActiveCfg = Debug|x64
+		{2D1041A6-D2B6-4672-8C74-655BE65F1357}.Debug|x64.Build.0 = Debug|x64
+		{2D1041A6-D2B6-4672-8C74-655BE65F1357}.Release|x64.ActiveCfg = Release|x64
+		{2D1041A6-D2B6-4672-8C74-655BE65F1357}.Release|x64.Build.0 = Release|x64
+		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Debug|x64.ActiveCfg = Debug|x64
+		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Debug|x64.Build.0 = Debug|x64
+		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Release|x64.ActiveCfg = Release|x64
+		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32D550AC-0478-4E4D-99A0-8B73264DBAF0}
+	EndGlobalSection
+EndGlobal
