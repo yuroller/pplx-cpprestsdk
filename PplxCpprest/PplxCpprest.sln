@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pplx", "Pplx\Pplx.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cpprest", "Cpprest\Cpprest.vcxproj", "{75E67BB6-43B7-48CC-8C59-10E6D8942E69}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpListener", "HttpListener\HttpListener.vcxproj", "{730C3A59-D8F9-4717-BEE0-0522503AB1E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Debug|x64.Build.0 = Debug|x64
 		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Release|x64.ActiveCfg = Release|x64
 		{75E67BB6-43B7-48CC-8C59-10E6D8942E69}.Release|x64.Build.0 = Release|x64
+		{730C3A59-D8F9-4717-BEE0-0522503AB1E5}.Debug|x64.ActiveCfg = Debug|x64
+		{730C3A59-D8F9-4717-BEE0-0522503AB1E5}.Debug|x64.Build.0 = Debug|x64
+		{730C3A59-D8F9-4717-BEE0-0522503AB1E5}.Release|x64.ActiveCfg = Release|x64
+		{730C3A59-D8F9-4717-BEE0-0522503AB1E5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
