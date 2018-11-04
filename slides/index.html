@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>pplx e cpprestsdk</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Sommario</h2>
+					<ul>
+						<li>Introduzione a cpprestsdk</li>
+						<li>Programmazione asincrona</li>
+						<li>Modello dei task di pplx</li>
+						<li>Esercizi con i task</li>
+						<li>Funzionalit&agrave; di cpprestsdk</li>
+						<li>Esempi con cpprestsdk</li>
+						<li>Domande</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Yuri Valentini</h2>
+					<ul>
+						<li>SW Windows e Linux</li>
+						<li>FW schede embedded</li>
+						<li>Linguaggi: C/C++, C#, Python</li>
+						<li>Ambiti:
+							<ul>
+								<li>Videoconferenza e VOIP</li>
+								<li>Automazione industriale</li>
+							</ul>
+						</li>
+						<li>yuroller@gmail.com</li>
+						<li>https://github.com/yuroller</li>						
+					</ul>
+				</section>
+				<section>
+					<h2>cpprestsdk</h2>
+					<blockquote>The C++ REST SDK is a Microsoft project for cloud-based client-server communication
+						in native code using a modern asynchronous C++ API design.
+						This project aims to help C++ developers connect to and interact with services.
+					</blockquote>
+				</section>
+				<section>
+					<h2>Servizi WEB / API cloud</h2>
+					<ul>
+						<li>Google Maps</li>
+						<li>Facebook Graph API</li>
+						<li>Twitter</li>
+						<li>Dropbox</li>
+						<li>Wordpress</li>
+						<li>...</li>
+					</ul>
+					<p class="fragment">Raramente libreria o sdk per c++ &#128546;</p>
+				</section>
+				<section>
+					<h2>Protocolli</h2>
+					<ul>
+						<li>http/https</li>
+						<li>websocket</li>
+						<li>json</li>
+						<li>oauth/oauth2</li>					
+					</ul>
+					<p class="fragment">Ci aiuta cpprestsdk &#128512;</p>
+				</section>
+				<section>
+					<h2>Installazione</h2>
+					<pre>
+&gt; git clone https://github.com/Microsoft/vcpkg.git
+&gt; cd vcpkg
+&gt; bootstrap-vcpkg.bat
+(admin)&gt; vcpkg integrate install
+&gt; vcpkg install cpprestsdk:x64-windows</pre>
+				</section>
+				<section>
+					<h2>Caratteristiche</h2>
+					<ul>
+						<li>asincrona</li>
+						<li>multipiattaforma:</li>
+						<ul>
+							<li>Windows desktop/UWP</li>
+							<li>Linux / Android</li>
+							<li>Mac OsX / IOS</li>
+							<li>Legacy (XP, phone8/8.1)</li>							
+						</ul>
+						<li>sufficientemente completa</li>
+						<li>abbastanza di alto livello</li>
+					</ul>
+				</section>
+				<section>
+					<h2>"Colazione" asincrona</h2>
+					<ul>
+						<li>Metto una tazza di acqua nel microonde</li>
+						<li>Intanto apparecchio il tavolo</li>
+						<li>Il microonde suona: metto la bustina di t&egrave;</li>
+						<li>Intanto preparo fette biscottate e marmellata</li>
+						<li>Il t&egrave; &egrave; pronto</li>
+						<li>Faccio colazione</li>
+					</ul>
+				</section>
+				<section>
+					<h2>pplx::task</h2>
+					<ul>
+						<li>std::async + std::future + continuation</li>
+						<li>TPL di C#</li>
+						<li>scheduler specifici:</li>
+						<ul>
+							<li>Windows ThreadPool</li>
+							<li>UWP WorkItemHandler</li>
+							<li>Mac OsX GrandCentralDispatch</li>
+							<li>o generico boost::asio</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Esempio pplx::task</h2>
+					<pre><code class="c++">pplx::task&lt;int&gt; risposta
+  = CalcolaRispostaAllaVitaUniversoETuttoQuanto();
+
+risposta.then([](int valore) {
+  std::cout &lt;&lt; &quot;La risposta &egrave; &quot; &lt;&lt; valore &lt;&lt; '\n';
+});</code></pre>
+					<p class="fragment">Giochiamo con i task &#128520;</p>
+				</section>
+				<section>
+					<h2>Componenti di cpprestsdk</h2>
+					<ul>
+						<li>json</li>
+						<li>stream asincroni</li>
+						<li>uri</li>
+						<li>http client</li>
+						<li>http listener (no UWP, WinPhone8.1, XP)</li>						
+						<li>websocket client (tramite )</li>
+						<li>oauth/oauth2 client</li>
+					</ul>
+				</section>
+				<section>
+					<h2>http client</h2>
+					<ul>
+						<li>Implementazioni:</li>
+						<ul>
+							<li>WinHTTP (windows desktop)</li>
+							<li>IXMLHTTPRequest2(UWP, WinPhone 8.1)</li>
+							<li>boost::asio + openssl</li>
+						</ul>
+						<li>Verifica certificati ssl con il sistema operativo</li>
+						<li>HTTP 1.1</li>
+						<li>Keepalive with chunked transfer encoding</li>
+					</ul>					
+				</section>
+				<section>
+					<h2>websocket</h2>
+					<ul>
+						<li>Implementazioni:</li>
+						<ul>
+							<li><a href="https://github.com/zaphoyd/websocketpp">websocketpp</a> + boost::asio + openssl</li>
+							<li>MessageWebSocket (UWP)</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Demo time</h2>
+					<p class="fragment">http_client, streams, websocket</p>
+					<p class="fragment">http_listener</p>
+				</section>
+				<section>
+					<h2>Domande?</h2>
+					<p class="fragment">Grazie &#128526;</p>
+				</section>
+			</section>
+		</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: false,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
