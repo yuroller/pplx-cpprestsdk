@@ -131,12 +131,39 @@
 					</ul>
 				</section>
 				<section>
+					<h2>Esecuzione task</h2>
+					<img class="plain" src="svg/thread_pool.svg" style="background:none;">
+				</section>
+				<section>
+					<h2>Task sequenziali</h2>
+					<img class="plain" src="svg/task_sequenziali.svg" style="background:none;">
+				</section>
+				<section>
+					<h2>Task innestati</h2>
+					<img class="plain" src="svg/task_innestati.svg" style="background:none;">
+				</section>
+				<section>
 					<h2>Esempio pplx::task</h2>
+					<pre><code class="c++">pplx::task&lt;int&gt; risposta
+	= CalcolaRispostaAllaVitaUniversoETuttoQuanto();
+
+risposta.then([](int valore) {
+	std::cout &lt;&lt; &quot;La risposta &egrave; &quot; &lt;&lt; valore &lt;&lt; '\n';
+});</code></pre>
+				</section>
+				<section>
+					<h2>Gestione errori</h2>
 					<pre><code class="c++">pplx::task&lt;int&gt; risposta
   = CalcolaRispostaAllaVitaUniversoETuttoQuanto();
 
-risposta.then([](int valore) {
-  std::cout &lt;&lt; &quot;La risposta &egrave; &quot; &lt;&lt; valore &lt;&lt; '\n';
+risposta.then([](pplx::task&lt;int&gt; antecedent) {
+  try {
+    int valore = antecedent.get();
+    std::cout &lt;&lt; &quot;La risposta &egrave; &quot; &lt;&lt; valore &lt;&lt; '\n';
+  }
+  catch (...) {
+    // ...
+  }
 });</code></pre>
 					<p class="fragment">Giochiamo con i task &#128520;</p>
 				</section>
@@ -148,7 +175,7 @@ risposta.then([](int valore) {
 						<li>uri</li>
 						<li>http client</li>
 						<li>http listener (no UWP, WinPhone8.1, XP)</li>						
-						<li>websocket client (tramite )</li>
+						<li>websocket client</li>
 						<li>oauth/oauth2 client</li>
 					</ul>
 				</section>
